@@ -39,20 +39,6 @@ class _MainScreenState extends State<MainScreen> {
         backgroundColor: Colors.red,
       ),
       backgroundColor: Colors.white,
-      floatingActionButton: new FloatingActionButton(
-        tooltip: 'Increment',
-        child: new Icon(
-          Icons.search,
-          color: Colors.white,
-        ),
-        backgroundColor: Colors.red,
-        onPressed: () {
-          onItemChanged();
-          setState(() {
-            FocusScope.of(context).unfocus();
-          });
-        },
-      ),
       body: SafeArea(
         child: Column(
           children: <Widget>[
