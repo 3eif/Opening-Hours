@@ -41,9 +41,23 @@ class BusinessScreen extends StatelessWidget {
                     business.name,
                     textDirection: TextDirection.ltr,
                     style: TextStyle(
-                      fontSize: 45,
+                      fontSize: 40,
                       color: Colors.black,
                       fontWeight: FontWeight.w500,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.only(top: 5.0, left: 80.0, right: 80.0),
+                  child: Text(
+                    business.formattedAddress,
+                    textDirection: TextDirection.ltr,
+                    style: TextStyle(
+                      fontSize: 17,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w200,
                     ),
                     textAlign: TextAlign.center,
                   ),

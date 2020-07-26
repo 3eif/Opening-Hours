@@ -33,6 +33,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text("Opening Hours"),
         backgroundColor: Colors.red,
@@ -58,6 +59,7 @@ class _MainScreenState extends State<MainScreen> {
             Padding(
               padding: const EdgeInsets.all(15),
               child: TextField(
+                textInputAction: TextInputAction.search,
                 controller: _textController,
                 decoration: InputDecoration(
                   hintText: 'Search Here...',
@@ -68,6 +70,10 @@ class _MainScreenState extends State<MainScreen> {
                   setState(() {
                     query = val;
                   });
+                },
+                onSubmitted: (val) {
+                  query = val;
+                  onItemChanged();
                 },
               ),
             ),
@@ -145,7 +151,31 @@ class _MainScreenState extends State<MainScreen> {
                     );
                   } else if (snapshot.hasError) {
                     return Text("${snapshot.error}");
-                  } else if (!snapshot.hasData) return Text('');
+                  } else if (!snapshot.hasData)
+                    return Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(top: 60.0),
+                          child: Icon(
+                            Icons.access_time,
+                            color: Colors.red,
+                            size: 140.0,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 30.0, vertical: 25.0),
+                          child: Text(
+                            'Search for a restraunt, business or shop!',
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.w400,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
+                    );
                 },
               ),
             ),
