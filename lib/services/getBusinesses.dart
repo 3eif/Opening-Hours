@@ -12,7 +12,7 @@ Future<List<Business>> getBusinesses(String q) async {
   Position pos = await getLocation();
   String query = q.replaceAll(new RegExp(r"\s+"), "%");
   http.Response res = await http.get(
-    'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${pos.latitude},${pos.longitude}&radius=7500&type=restaurant&keyword=$query&key=$apiKey',
+    'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${pos.latitude},${pos.longitude}&radius=7500&keyword=$query&key=$apiKey',
     headers: {HttpHeaders.authorizationHeader: apiKey},
   );
   dynamic data = json.decode(res.body)["results"];
